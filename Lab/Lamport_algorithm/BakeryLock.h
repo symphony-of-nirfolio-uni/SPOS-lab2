@@ -13,7 +13,7 @@
 
 namespace bakery_lock
 {
-	template<size_t MaxThreadsCount>
+	template<size_t Max_threads_count>
 	class BakeryLock : public FixnumLock
 	{
 	public:
@@ -25,7 +25,7 @@ namespace bakery_lock
 			is_enter_array[id] = true;
 
 			size_t max_item = number_array[0];
-			for (size_t i = 0; i < MaxThreadsCount; ++i)
+			for (size_t i = 0; i < Max_threads_count; ++i)
 			{
 				max_item = std::max(max_item, number_array[i]);
 			}
@@ -33,7 +33,7 @@ namespace bakery_lock
 
 			is_enter_array[id] = false;
 
-			for (size_t i = 0; i < MaxThreadsCount; ++i)
+			for (size_t i = 0; i < Max_threads_count; ++i)
 			{
 				while (is_enter_array[i])
 				{
@@ -95,12 +95,12 @@ namespace bakery_lock
 			return std::numeric_limits<size_t>::max();
 		}
 
-		void register_thread() override
+		void registerThread() override
 		{
-			register_thread(std::this_thread::get_id());
+			registerThread(std::this_thread::get_id());
 		}
 
-		void register_thread(std::thread::id id) override
+		void registerThread(std::thread::id id) override
 		{
 			std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
@@ -114,13 +114,13 @@ namespace bakery_lock
 			}
 		}
 
-		void unregister_thread() override
+		void unregisterThread() override
 		{
-			unregister_thread(std::this_thread::get_id());
+			unregisterThread(std::this_thread::get_id());
 		}
 
 
-		void unregister_thread(std::thread::id id) override
+		void unregisterThread(std::thread::id id) override
 		{
 			std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
@@ -135,10 +135,10 @@ namespace bakery_lock
 		}
 
 	private:
-		std::array<bool, MaxThreadsCount> is_enter_array{ false };
-		std::array<size_t, MaxThreadsCount> number_array{ 0 };
+		std::array<bool, Max_threads_count> is_enter_array{ false };
+		std::array<size_t, Max_threads_count> number_array{ 0 };
 
-		std::array<std::thread::id, MaxThreadsCount> thread_id_array{};
+		std::array<std::thread::id, Max_threads_count> thread_id_array{};
 		std::mutex thread_id_to_number_lock{};
 	};
 }

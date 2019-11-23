@@ -18,8 +18,8 @@ public:
 	virtual bool tryLock(size_t timeout_in_milliseconds) = 0;
 
 	virtual size_t getId() = 0;
-	virtual void register_thread() = 0;
-	virtual void register_thread(std::thread::id id) = 0;
-	virtual void unregister_thread() = 0;
-	virtual void unregister_thread(std::thread::id id) = 0;
+	virtual void registerThread() = 0;
+	virtual void registerThread(std::thread::id id) = 0;
+	virtual void unregisterThread() = 0;
+	virtual void unregisterThread(std::thread::id id) = 0;
 };
