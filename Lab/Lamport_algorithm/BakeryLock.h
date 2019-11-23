@@ -61,7 +61,8 @@ namespace bakery_lock
 			size_t id = getId();
 			assert(id != std::numeric_limits<size_t>::max());
 
-
+			// This algorithm does not support this method.
+			assert(false);
 
 			return false;
 		}
@@ -71,7 +72,8 @@ namespace bakery_lock
 			size_t id = getId();
 			assert(id != std::numeric_limits<size_t>::max());
 
-
+			// This algorithm does not support this method.
+			assert(false);
 
 			return false;
 		}
@@ -82,11 +84,11 @@ namespace bakery_lock
 			std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
 			std::thread::id id = std::this_thread::get_id();
-			for (size_t i = 0; i < thread_id_to_number_array.size(); ++i)
+			for (size_t i = 0; i < thread_id_array.size(); ++i)
 			{
-				if (thread_id_to_number_array[i].first == id)
+				if (thread_id_array[i] == id)
 				{
-					return thread_id_to_number_array[i].second;
+					return i;
 				}
 			}
 
@@ -102,12 +104,11 @@ namespace bakery_lock
 		{
 			std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
-			for (size_t i = 0; i < thread_id_to_number_array.size(); ++i)
+			for (size_t i = 0; i < thread_id_array.size(); ++i)
 			{
-				if (thread_id_to_number_array[i].first == std::thread::id{})
+				if (thread_id_array[i] == std::thread::id{})
 				{
-					thread_id_to_number_array[i].first = id;
-					thread_id_to_number_array[i].second = i;
+					thread_id_array[i] = id;
 					return;
 				}
 			}
@@ -123,12 +124,11 @@ namespace bakery_lock
 		{
 			std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
-			for (size_t i = 0; i < thread_id_to_number_array.size(); ++i)
+			for (size_t i = 0; i < thread_id_array.size(); ++i)
 			{
-				if (thread_id_to_number_array[i].first == id)
+				if (thread_id_array[i] == id)
 				{
-					thread_id_to_number_array[i].first = std::thread::id{};
-					thread_id_to_number_array[i].second = 0;
+					thread_id_array[i] = std::thread::id{};
 					return;
 				}
 			}
@@ -138,7 +138,7 @@ namespace bakery_lock
 		std::array<bool, MaxThreadsCount> is_enter_array{ false };
 		std::array<size_t, MaxThreadsCount> number_array{ 0 };
 
-		std::array<std::pair<std::thread::id, size_t>, MaxThreadsCount> thread_id_to_number_array{};
+		std::array<std::thread::id, MaxThreadsCount> thread_id_array{};
 		std::mutex thread_id_to_number_lock{};
 	};
 }
