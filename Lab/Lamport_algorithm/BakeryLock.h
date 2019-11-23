@@ -29,7 +29,7 @@ namespace bakery_lock
 			{
 				max_item = std::max(max_item, number_array[i]);
 			}
-			number_array[id] = max_item;
+			number_array[id] = max_item + 1;
 
 			is_enter_array[id] = false;
 
