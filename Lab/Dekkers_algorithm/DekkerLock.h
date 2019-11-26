@@ -1,7 +1,7 @@
 #pragma once
-#include "../FixnumLock/FixnumLock.h"
+#include "../FixnumLock/Lockable.h"
 
-class DekkerLock : FixnumLock
+class DekkerLock //: public Lockable<2>
 {
 
 };
