@@ -6,9 +6,9 @@
 class CounterClass
 {
 public:
-	CounterClass(AtomicLockable& lock, unsigned long long* counter, int steps);
+	CounterClass(AbstractLockable& lock, unsigned long long* counter, int steps);
 
-	void increment_counter(AtomicLockable& lock, unsigned long long* counter, int steps);
+	void increment_counter(AbstractLockable& lock, unsigned long long* counter, int steps);
 
 	void join();
 

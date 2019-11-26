@@ -2,7 +2,7 @@
 #include "AbstractLockable.h"
 #include <atomic>
 
-class AtomicLockable : AbstractLockable {
+class AtomicLockable : public AbstractLockable {
 public:
 	void lock();
 

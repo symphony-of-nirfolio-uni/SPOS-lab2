@@ -126,11 +126,15 @@
     <ClCompile Include="AtomicLockable.cpp" />
     <ClCompile Include="CounterClass.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Semaphore.cpp" />
+    <ClCompile Include="SemaphoreLockable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractLockable.h" />
     <ClInclude Include="AtomicLockable.h" />
     <ClInclude Include="CounterClass.h" />
+    <ClInclude Include="Semaphore.h" />
+    <ClInclude Include="SemaphoreLockable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

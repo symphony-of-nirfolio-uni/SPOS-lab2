@@ -1,32 +1,37 @@
-#include "AtomicLockable.h"
+#include "SemaphoreLockable.h"
 #include "CounterClass.h"
 #include <vector>
 #include <fstream>
 #include <memory.h>
 
-void AtomicLockable::lock() 
+SemaphoreLockable::SemaphoreLockable(std::shared_ptr<Semaphore> sem)
 {
-	while (lock_flag.test_and_set());
+	this->sem = sem;
 }
 
-void AtomicLockable::unlock()
+void SemaphoreLockable::lock()
 {
-	lock_flag.clear();
+	while(!sem->decr());
+}
+
+void SemaphoreLockable::unlock()
+{
+	sem->incr();
 }
 
 /*bool AtomicLockable::try_lock()
 {
-	return !lock_flag.test_and_set();
+	return sem->decr();
 }*/
 
-void atomic_lock_bm(int tests, int start_amount, unsigned long long* counter, int steps)
+void semaphore_lock_bm(int tests, int start_amount, unsigned long long* counter, int steps)
 {
 
-	AtomicLockable lock;
+	SemaphoreLockable lock(std::make_shared<Semaphore>(1));
 
 	std::vector<std::unique_ptr<CounterClass> > counters;
 
-	std::ofstream fout{ "Atomic counter benchmark.txt" };
+	std::ofstream fout{ "Semaphore counter benchmark.txt" };
 
 	for (int i = 0; i < tests; i++)
 	{
