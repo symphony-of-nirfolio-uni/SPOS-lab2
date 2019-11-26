@@ -25,6 +25,8 @@ void test_function(long number)
 	++tested_index;
 
 	bakeryLock.unlock();
+
+	bakeryLock.unregisterThread();
 }
 
 
