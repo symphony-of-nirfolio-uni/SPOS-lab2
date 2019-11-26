@@ -128,6 +128,7 @@
     <ClCompile Include="Benchmark.cpp" />
     <ClCompile Include="CounterClass.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MutexLockable.cpp" />
     <ClCompile Include="Semaphore.cpp" />
     <ClCompile Include="SemaphoreLockable.cpp" />
   </ItemGroup>
@@ -137,6 +138,7 @@
     <ClInclude Include="BakeryLockable.h" />
     <ClInclude Include="Benchmark.h" />
     <ClInclude Include="CounterClass.h" />
+    <ClInclude Include="MutexLockable.h" />
     <ClInclude Include="Semaphore.h" />
     <ClInclude Include="SemaphoreLockable.h" />
   </ItemGroup>

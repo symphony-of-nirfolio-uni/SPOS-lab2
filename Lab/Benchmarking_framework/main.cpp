@@ -3,6 +3,23 @@
 #include "AtomicLockable.h"
 #include "SemaphoreLockable.h"
 #include "BakeryLockable.h"
+#include "MutexLockable.h"
+
+void singlethreaded_time(int steps)
+{
+	auto start = std::chrono::system_clock::now();
+
+	int counter = 0;
+
+	for (int i = 0; i < steps; i++)
+		counter++;
+
+	auto end = std::chrono::system_clock::now();
+
+	int time = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+	std::cout << "Singlethreaded time for " << steps << " steps: " << time << " ms" << std::endl;
+}
 
 int main() 
 {
@@ -11,9 +28,13 @@ int main()
 
 	int steps = 1000000;
 
+	singlethreaded_time(steps);
+
 	atomic_lock_bm(tests, start_amount, steps);
 
 	semaphore_lock_bm(tests, start_amount, steps);
+
+	mutex_lock_bm(tests, start_amount, steps);
 
 	//bakery_lock_bm(tests, start_amount, counter, steps);
 }

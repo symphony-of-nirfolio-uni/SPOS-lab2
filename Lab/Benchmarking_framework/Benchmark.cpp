@@ -5,7 +5,7 @@
 void benchmark(AbstractLockable& lock, std::vector<std::unique_ptr<CounterClass> >& counters,
 				int tests, int start_amount, int steps, std::string const& name)
 {
-	int counter;
+	int counter = 0;
 
 	std::ofstream fout{ name + " counter benchmark.txt" };
 
@@ -45,7 +45,7 @@ void benchmark(AbstractLockable& lock, std::vector<std::unique_ptr<CounterClass>
 		fout << "Quickest thread: " << min << " ms" << std::endl;
 		fout << "Slowest thread: " << max << " ms" << std::endl;
 		fout << "Delta: " << max - min << " ms" << std::endl;
-		fout << "Delta%: " << ((max - min) * 100) / max << "%" << std::endl << std::endl;
+		fout << "Delta%: " << (((double)max - min) * 100) / max << "%" << std::endl << std::endl;
 
 		counter = 0;
 
