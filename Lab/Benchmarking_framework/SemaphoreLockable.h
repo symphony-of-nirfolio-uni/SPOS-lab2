@@ -5,7 +5,7 @@
 
 class SemaphoreLockable : public AbstractLockable {
 public:
-	SemaphoreLockable(std::shared_ptr<Semaphore> sem);
+	SemaphoreLockable(std::unique_ptr<Semaphore>&& sem);
 
 	void lock();
 
@@ -13,7 +13,7 @@ public:
 
 	/*bool try_lock();*/
 private:
-	std::shared_ptr<Semaphore> sem;
+	std::unique_ptr<Semaphore> sem;
 };
 
 void semaphore_lock_bm(int tests, int start_amount, unsigned long long* counter, int steps);

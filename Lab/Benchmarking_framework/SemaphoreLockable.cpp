@@ -4,9 +4,9 @@
 #include <fstream>
 #include <memory.h>
 
-SemaphoreLockable::SemaphoreLockable(std::shared_ptr<Semaphore> sem)
+SemaphoreLockable::SemaphoreLockable(std::unique_ptr<Semaphore>&& sem)
 {
-	this->sem = sem;
+	this->sem = std::move(sem);
 }
 
 void SemaphoreLockable::lock()
@@ -27,7 +27,7 @@ void SemaphoreLockable::unlock()
 void semaphore_lock_bm(int tests, int start_amount, unsigned long long* counter, int steps)
 {
 
-	SemaphoreLockable lock(std::make_shared<Semaphore>(1));
+	SemaphoreLockable lock(std::make_unique<Semaphore>(1));
 
 	std::vector<std::unique_ptr<CounterClass> > counters;
 
