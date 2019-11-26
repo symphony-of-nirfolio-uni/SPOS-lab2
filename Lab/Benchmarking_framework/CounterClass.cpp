@@ -1,18 +1,18 @@
 #include "CounterClass.h"
 
-CounterClass::CounterClass(AbstractLockable& lock, unsigned long long* counter, int steps)
+CounterClass::CounterClass(AbstractLockable& lock, unsigned long long& counter, int steps)
 {
 	start = std::chrono::system_clock::now();
 
-	exec_thread = std::thread(&CounterClass::increment_counter, this, std::ref(lock), counter, steps);
+	exec_thread = std::thread(&CounterClass::increment_counter, this, std::ref(lock), std::ref(counter), steps);
 }
 
-void CounterClass::increment_counter(AbstractLockable& lock, unsigned long long* counter, int steps)
+void CounterClass::increment_counter(AbstractLockable& lock, unsigned long long& counter, int steps)
 {
 	for (int i = 0; i < steps; i++) 
 	{
 		lock.lock();
-		*counter += 1;
+		counter += 1;
 		lock.unlock();
 	}
 

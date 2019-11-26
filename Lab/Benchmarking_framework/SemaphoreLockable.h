@@ -16,4 +16,4 @@ private:
 	std::unique_ptr<Semaphore> sem;
 };
 
-void semaphore_lock_bm(int tests, int start_amount, unsigned long long* counter, int steps);
+void semaphore_lock_bm(int tests, int start_amount, unsigned long long& counter, int steps);

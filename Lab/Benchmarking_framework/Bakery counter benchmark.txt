@@ -1,0 +1,16 @@
+Test 0
+Counted: 2000000
+Process amount: 2
+Quickest thread: 9085 ms
+Slowest thread: 9091 ms
+Delta: 6 ms
+Delta%: 0%
+
+Test 1
+Counted: 3000000
+Process amount: 3
+Quickest thread: 17831 ms
+Slowest thread: 17867 ms
+Delta: 36 ms
+Delta%: 0%
+

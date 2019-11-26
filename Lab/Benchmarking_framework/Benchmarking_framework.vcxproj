@@ -124,6 +124,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AtomicLockable.cpp" />
+    <ClCompile Include="BakeryLockable.cpp" />
+    <ClCompile Include="Benchmark.cpp" />
     <ClCompile Include="CounterClass.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Semaphore.cpp" />
@@ -132,6 +134,8 @@
   <ItemGroup>
     <ClInclude Include="AbstractLockable.h" />
     <ClInclude Include="AtomicLockable.h" />
+    <ClInclude Include="BakeryLockable.h" />
+    <ClInclude Include="Benchmark.h" />
     <ClInclude Include="CounterClass.h" />
     <ClInclude Include="Semaphore.h" />
     <ClInclude Include="SemaphoreLockable.h" />
