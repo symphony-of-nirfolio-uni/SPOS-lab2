@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Build_all", "Build_all\Build_all.vcxproj", "{E171FA05-2F3C-40EB-8A0E-47D8614BB808}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lamport_algorithm", "Lamport_algorithm\Lamport_algorithm.vcxproj", "{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImprovedLamportAlgorithm", "ImprovedLamportAlgorithm\ImprovedLamportAlgorithm.vcxproj", "{C55166C9-379C-4683-A6E8-C470D6849562}"
 EndProject
@@ -27,14 +25,6 @@ Global
 		{E171FA05-2F3C-40EB-8A0E-47D8614BB808}.Release|x64.Build.0 = Release|x64
 		{E171FA05-2F3C-40EB-8A0E-47D8614BB808}.Release|x86.ActiveCfg = Release|Win32
 		{E171FA05-2F3C-40EB-8A0E-47D8614BB808}.Release|x86.Build.0 = Release|Win32
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Debug|x64.ActiveCfg = Debug|x64
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Debug|x64.Build.0 = Debug|x64
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Debug|x86.ActiveCfg = Debug|Win32
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Debug|x86.Build.0 = Debug|Win32
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Release|x64.ActiveCfg = Release|x64
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Release|x64.Build.0 = Release|x64
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Release|x86.ActiveCfg = Release|Win32
-		{F349D8B4-8DD2-42D9-B522-32FD8D7C8F53}.Release|x86.Build.0 = Release|Win32
 		{C55166C9-379C-4683-A6E8-C470D6849562}.Debug|x64.ActiveCfg = Debug|x64
 		{C55166C9-379C-4683-A6E8-C470D6849562}.Debug|x64.Build.0 = Debug|x64
 		{C55166C9-379C-4683-A6E8-C470D6849562}.Debug|x86.ActiveCfg = Debug|Win32

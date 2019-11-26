@@ -1,5 +1,5 @@
 #pragma once
-#include "../Lamport_algorithm/FixnumLock.h"
+#include "../FixnumLock/Lockable.h"
 
 #include <atomic>
 #include <vector>
@@ -7,13 +7,13 @@
 #include <thread>
 #include <mutex>
 
-class ImprovedBakeryLock : public FixnumLock{
+class ImprovedBakeryLock : public Lockable<100>{
 
 private:
-  std::atomic<size_t> next_ticket = 0;
-  std::atomic<size_t> now_serving = 0;
+  std::atomic<std::size_t> next_ticket = 0;
+  std::atomic<std::size_t> now_serving = 0;
   std::atomic<bool> locked = false;
-  const size_t APPROX_BOUND_VALUE = 100;
+  const std::size_t APPROX_BOUND_VALUE = 100;
 
 public:
   ImprovedBakeryLock();
@@ -21,7 +21,6 @@ public:
 
   virtual void lock() override;
   virtual void unlock() override;
-  virtual bool tryLock() override;
 
 private:
   void restrictTickets();
