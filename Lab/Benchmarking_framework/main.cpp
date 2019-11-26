@@ -1,9 +1,6 @@
 #include <iostream>
 #include <thread>
-#include "AtomicLockable.h"
-#include "SemaphoreLockable.h"
-#include "BakeryLockable.h"
-#include "MutexLockable.h"
+#include "Lockables.h"
 
 void singlethreaded_time(int steps)
 {
@@ -26,7 +23,7 @@ int main()
 	int tests = 5;
 	int start_amount = 2;
 
-	int steps = 1000000;
+	int steps = 10000000;
 
 	singlethreaded_time(steps);
 

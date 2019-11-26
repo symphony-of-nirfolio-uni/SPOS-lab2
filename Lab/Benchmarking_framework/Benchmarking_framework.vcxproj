@@ -138,6 +138,7 @@
     <ClInclude Include="BakeryLockable.h" />
     <ClInclude Include="Benchmark.h" />
     <ClInclude Include="CounterClass.h" />
+    <ClInclude Include="Lockables.h" />
     <ClInclude Include="MutexLockable.h" />
     <ClInclude Include="Semaphore.h" />
     <ClInclude Include="SemaphoreLockable.h" />
