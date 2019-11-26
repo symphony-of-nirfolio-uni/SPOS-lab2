@@ -48,6 +48,11 @@ namespace bakery_lock
 			}
 		}
 
+		void lockInterruptibly() override
+		{
+			lock();
+		}
+
 		void unlock() override
 		{
 			size_t id = getId();
@@ -119,7 +124,6 @@ namespace bakery_lock
 			unregisterThread(std::this_thread::get_id());
 		}
 
-
 		void unregisterThread(std::thread::id id) override
 		{
 			std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
@@ -131,6 +135,16 @@ namespace bakery_lock
 					thread_id_array[i] = std::thread::id{};
 					return;
 				}
+			}
+		}
+
+		void reset() override
+		{
+			std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
+
+			for (size_t i = 0; i < thread_id_array.size(); ++i)
+			{
+				thread_id_array[i] = std::thread::id{};
 			}
 		}
 
