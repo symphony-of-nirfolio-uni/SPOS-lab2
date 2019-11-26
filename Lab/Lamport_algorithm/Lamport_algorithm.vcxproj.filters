@@ -23,9 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FixnumLock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BakeryLock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
