@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "FixnumLock.h"
+#include "../FixnumLock/FixnumLock.h"
 #include <array>
 #include <algorithm> 
 #include <thread>
