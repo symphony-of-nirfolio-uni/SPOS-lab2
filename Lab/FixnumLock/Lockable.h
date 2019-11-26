@@ -10,7 +10,7 @@
 
 
 template<size_t Max_threads_count>
-class Lockble : public FixnumLock
+class Lockable : public FixnumLock
 {
 
 public:
