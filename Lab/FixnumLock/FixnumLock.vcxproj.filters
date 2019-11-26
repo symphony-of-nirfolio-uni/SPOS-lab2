@@ -18,5 +18,8 @@
     <ClInclude Include="FixnumLock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Lockable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
