@@ -1,19 +1,19 @@
 #include "CounterClass.h"
 
-CounterClass::CounterClass(AtomicLockable* lock, unsigned long long* counter, int steps)
+CounterClass::CounterClass(AtomicLockable& lock, unsigned long long* counter, int steps)
 {
 	start = std::chrono::system_clock::now();
 
-	exec_thread = std::thread(&CounterClass::increment_counter, this, lock, counter, steps);
+	exec_thread = std::thread(&CounterClass::increment_counter, this, std::ref(lock), counter, steps);
 }
 
-void CounterClass::increment_counter(AtomicLockable* lock, unsigned long long* counter, int steps)
+void CounterClass::increment_counter(AtomicLockable& lock, unsigned long long* counter, int steps)
 {
 	for (int i = 0; i < steps; i++) 
 	{
-		lock->lock();
+		lock.lock();
 		*counter += 1;
-		lock->unlock();
+		lock.unlock();
 	}
 
 	end = std::chrono::system_clock::now();

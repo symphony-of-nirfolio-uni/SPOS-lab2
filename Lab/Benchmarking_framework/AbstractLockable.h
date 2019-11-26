@@ -6,5 +6,5 @@ public:
 
 	virtual void unlock() = 0;
 
-	virtual bool try_lock() = 0;
+	/*virtual bool try_lock() = 0;*/
 };
