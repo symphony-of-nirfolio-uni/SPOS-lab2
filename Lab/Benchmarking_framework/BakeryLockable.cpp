@@ -6,13 +6,21 @@
 
 void BakeryLockable::lock()
 {
-	b_lock.registerThread();
 	b_lock.lock();
 }
 
 void BakeryLockable::unlock()
 {
 	b_lock.unlock();
+}
+
+void BakeryLockable::registerThread()
+{
+	b_lock.registerThread();
+}
+
+void BakeryLockable::unregisterThread()
+{
 	b_lock.unregisterThread();
 }
 

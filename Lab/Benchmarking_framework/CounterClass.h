@@ -1,7 +1,7 @@
 #pragma once
 #include <chrono>
 #include <thread>
-#include "AtomicLockable.h"
+#include "AbstractLockable.h"
 
 class CounterClass
 {

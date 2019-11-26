@@ -1,40 +1,40 @@
 Test 0
-Counted: 20000000
+Counted: 200000
 Process amount: 2
-Quickest thread: 7656 ms
-Slowest thread: 7662 ms
-Delta: 6 ms
-Delta%: 0.0783085%
+Quickest thread: 85 ms
+Slowest thread: 85 ms
+Delta: 0 ms
+Delta%: 0%
 
 Test 1
-Counted: 30000000
+Counted: 300000
 Process amount: 3
-Quickest thread: 11953 ms
-Slowest thread: 11974 ms
-Delta: 21 ms
-Delta%: 0.17538%
+Quickest thread: 114 ms
+Slowest thread: 120 ms
+Delta: 6 ms
+Delta%: 5%
 
 Test 2
-Counted: 40000000
+Counted: 400000
 Process amount: 4
-Quickest thread: 20286 ms
-Slowest thread: 20651 ms
-Delta: 365 ms
-Delta%: 1.76747%
+Quickest thread: 160 ms
+Slowest thread: 167 ms
+Delta: 7 ms
+Delta%: 4.19162%
 
 Test 3
-Counted: 50000000
+Counted: 500000
 Process amount: 5
-Quickest thread: 31860 ms
-Slowest thread: 32214 ms
-Delta: 354 ms
-Delta%: 1.0989%
+Quickest thread: 201 ms
+Slowest thread: 215 ms
+Delta: 14 ms
+Delta%: 6.51163%
 
 Test 4
-Counted: 60000000
+Counted: 600000
 Process amount: 6
-Quickest thread: 45435 ms
-Slowest thread: 45664 ms
-Delta: 229 ms
-Delta%: 0.501489%
+Quickest thread: 333 ms
+Slowest thread: 356 ms
+Delta: 23 ms
+Delta%: 6.46067%
 

@@ -1,16 +1,40 @@
 Test 0
-Counted: 2000000
+Counted: 200000
 Process amount: 2
-Quickest thread: 9085 ms
-Slowest thread: 9091 ms
-Delta: 6 ms
-Delta%: 0%
+Quickest thread: 829 ms
+Slowest thread: 847 ms
+Delta: 18 ms
+Delta%: 2.12515%
 
 Test 1
-Counted: 3000000
+Counted: 300000
 Process amount: 3
-Quickest thread: 17831 ms
-Slowest thread: 17867 ms
-Delta: 36 ms
-Delta%: 0%
+Quickest thread: 1161 ms
+Slowest thread: 1194 ms
+Delta: 33 ms
+Delta%: 2.76382%
+
+Test 2
+Counted: 400000
+Process amount: 4
+Quickest thread: 1316 ms
+Slowest thread: 1317 ms
+Delta: 1 ms
+Delta%: 0.0759301%
+
+Test 3
+Counted: 500000
+Process amount: 5
+Quickest thread: 1894 ms
+Slowest thread: 1895 ms
+Delta: 1 ms
+Delta%: 0.0527704%
+
+Test 4
+Counted: 600000
+Process amount: 6
+Quickest thread: 2356 ms
+Slowest thread: 2357 ms
+Delta: 1 ms
+Delta%: 0.0424268%
 

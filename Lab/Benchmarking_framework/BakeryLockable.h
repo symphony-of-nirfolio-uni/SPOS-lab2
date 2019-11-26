@@ -8,6 +8,10 @@ public:
 	void lock();
 
 	void unlock();
+
+	void registerThread();
+
+	void unregisterThread();
 private:
 	bakery_lock::BakeryLock<30> b_lock;
 };

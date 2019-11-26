@@ -1,4 +1,5 @@
 #include "CounterClass.h"
+#include "BakeryLockable.h"
 
 CounterClass::CounterClass(AbstractLockable& lock, int& counter, int steps)
 {
@@ -9,11 +10,22 @@ CounterClass::CounterClass(AbstractLockable& lock, int& counter, int steps)
 
 void CounterClass::increment_counter(AbstractLockable& lock, int& counter, int steps)
 {
+	BakeryLockable* bakery = dynamic_cast<BakeryLockable*>(&lock);
+	if (bakery)
+	{
+		bakery->registerThread();
+	}
+
 	for (int i = 0; i < steps; i++) 
 	{
 		lock.lock();
 		counter += 1;
 		lock.unlock();
+	}
+
+	if (bakery)
+	{
+		bakery->unregisterThread();
 	}
 
 	end = std::chrono::system_clock::now();
