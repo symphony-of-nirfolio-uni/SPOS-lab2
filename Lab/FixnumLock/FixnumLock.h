@@ -11,8 +11,6 @@ public:
 
 	virtual void lock() = 0;
 	virtual void unlock() = 0;
-	virtual bool tryLock() = 0;
-	virtual bool tryLock(size_t timeout_in_ms) = 0;
 
 	virtual size_t getId() = 0;
 	virtual void registerThread() = 0;
