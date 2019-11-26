@@ -5,4 +5,4 @@
 #include "CounterClass.h"
 #include <string>
 void benchmark(AbstractLockable& lock, std::vector<std::unique_ptr<CounterClass> >& counters,
-	int tests, int start_amount, unsigned long long& counter, int steps, std::string const& name);
+	int tests, int start_amount, int steps, std::string const& name);

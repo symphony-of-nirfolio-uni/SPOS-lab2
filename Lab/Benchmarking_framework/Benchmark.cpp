@@ -1,13 +1,19 @@
 #include "Benchmark.h"
 #include <fstream>
+#include <iostream>
 
 void benchmark(AbstractLockable& lock, std::vector<std::unique_ptr<CounterClass> >& counters,
-				int tests, int start_amount, unsigned long long& counter, int steps, std::string const& name)
+				int tests, int start_amount, int steps, std::string const& name)
 {
+	int counter;
+
 	std::ofstream fout{ name + " counter benchmark.txt" };
+
+	std::cout << "Testing " << name << std::endl;
 
 	for (int i = 0; i < tests; i++)
 	{
+		std::cout << "Test " << i << "...";
 		for (int j = 0; j < start_amount + i; j++)
 		{
 			counters.push_back(std::make_unique<CounterClass>(lock, counter, steps));
@@ -42,5 +48,8 @@ void benchmark(AbstractLockable& lock, std::vector<std::unique_ptr<CounterClass>
 		fout << "Delta%: " << ((max - min) * 100) / max << "%" << std::endl << std::endl;
 
 		counter = 0;
+
+		std::cout << "\r";
 	}
+	std::cout << "Done!      \n";
 }

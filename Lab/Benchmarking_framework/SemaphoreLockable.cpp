@@ -19,17 +19,12 @@ void SemaphoreLockable::unlock()
 	sem->incr();
 }
 
-/*bool AtomicLockable::try_lock()
-{
-	return sem->decr();
-}*/
-
-void semaphore_lock_bm(int tests, int start_amount, unsigned long long& counter, int steps)
+void semaphore_lock_bm(int tests, int start_amount, int steps)
 {
 
 	SemaphoreLockable lock(std::make_unique<Semaphore>(1));
 
 	std::vector<std::unique_ptr<CounterClass> > counters;
 
-	benchmark(lock, counters, tests, start_amount, counter, steps, "Semaphore");
+	benchmark(lock, counters, tests, start_amount, steps, "Semaphore");
 }

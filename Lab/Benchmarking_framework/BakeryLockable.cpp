@@ -16,12 +16,12 @@ void BakeryLockable::unlock()
 	b_lock.unregisterThread();
 }
 
-void bakery_lock_bm(int tests, int start_amount, unsigned long long& counter, int steps)
+void bakery_lock_bm(int tests, int start_amount, int steps)
 {
 
 	BakeryLockable lock;
 
 	std::vector<std::unique_ptr<CounterClass> > counters;
 
-	benchmark(lock, counters, tests, start_amount, counter, steps, "Bakery");
+	benchmark(lock, counters, tests, start_amount, steps, "Bakery");
 }

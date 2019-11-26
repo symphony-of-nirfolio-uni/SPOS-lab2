@@ -12,4 +12,4 @@ private:
 	bakery_lock::BakeryLock<30> b_lock;
 };
 
-void bakery_lock_bm(int tests, int start_amount, unsigned long long& counter, int steps);
+void bakery_lock_bm(int tests, int start_amount, int steps);
