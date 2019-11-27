@@ -27,7 +27,8 @@ namespace bakery_lock
 			size_t max_item = number_array[0];
 			for (size_t i = 0; i < Max_threads_count; ++i)
 			{
-				max_item = std::max(max_item, number_array[i]);
+				size_t item = number_array[i];
+				max_item = std::max(max_item, item);
 			}
 			number_array[id] = max_item + 1;
 
