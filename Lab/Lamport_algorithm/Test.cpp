@@ -4,27 +4,32 @@
 #include <iostream>
 
 
-size_t const ThreadsCount = 1000;
+size_t const ThreadsCount = 4;
+size_t const TestCount = 1'000'000;
 
 
 bakery_lock::BakeryLock<ThreadsCount> bakeryLock;
 
 long tested_value = 0;
 size_t tested_index = 0;
-std::array<long, ThreadsCount> test_result;
+std::array<long, ThreadsCount * TestCount> test_result;
 
 
 void test_function(long number)
 {
-	bakeryLock.registerThread();
+	for (size_t i = 0; i < TestCount; ++i)
+	{
+		bakeryLock.registerThread();
 
-	bakeryLock.lock();
-	tested_value += number;
+		bakeryLock.lock();
+		tested_value += number;
 
-	test_result[tested_index] = tested_value;
-	++tested_index;
+		test_result[tested_index] = tested_value;
+		++tested_index;
 
-	bakeryLock.unlock();
+		bakeryLock.unlock();
+		bakeryLock.unregisterThread();
+	}
 }
 
 
@@ -55,7 +60,7 @@ void test()
 		threads[i].join();
 	}
 
-	for (size_t i = 0; i < ThreadsCount; ++i)
+	for (size_t i = 0; i < ThreadsCount * TestCount; ++i)
 	{
 		std::cout << test_result[i] << ' ';
 	}
