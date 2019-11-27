@@ -8,6 +8,7 @@
 #include <mutex>
 #include <numeric>
 #include <assert.h>
+#include <unordered_map>
 
 
 template<size_t Max_threads_count>
@@ -15,8 +16,20 @@ class Lockable : public FixnumLock
 {
 
 public:
+
+
+	void lock() override
+	{
+		lock(thread_id);
+	}
+
 	size_t getId() override
 	{
+		if (thread_id != -1)
+		{
+			return thread_id;
+		}
+
 		std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
 		std::thread::id id = std::this_thread::get_id();
@@ -30,16 +43,13 @@ public:
 
 		// thread not found
 		assert(false);
-		return std::numeric_limits<size_t>::max();
+		
 	}
 
+	
 	void registerThread() override
 	{
-		registerThread(std::this_thread::get_id());
-	}
-
-	void registerThread(std::thread::id id) override
-	{
+		std::thread::id id = std::this_thread::get_id();
 		std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
 		for (size_t i = 0; i < thread_id_array.size(); ++i)
@@ -47,6 +57,7 @@ public:
 			if (thread_id_array[i] == std::thread::id{})
 			{
 				thread_id_array[i] = id;
+				thread_id = id;
 				return;
 			}
 		}
@@ -57,11 +68,7 @@ public:
 
 	void unregisterThread() override
 	{
-		unregisterThread(std::this_thread::get_id());
-	}
-
-	void unregisterThread(std::thread::id id) override
-	{
+		std::thread::id id = std::this_thread::get_id();
 		std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
 
 		for (size_t i = 0; i < thread_id_array.size(); ++i)
@@ -69,6 +76,7 @@ public:
 			if (thread_id_array[i] == id)
 			{
 				thread_id_array[i] = std::thread::id{};
+				thread_id = -1;
 				return;
 			}
 		}
@@ -90,4 +98,6 @@ public:
 private:
 	std::array<std::thread::id, Max_threads_count> thread_id_array{};
 	std::mutex thread_id_to_number_lock{};
+	std::unordered_map < std::thread::id, size_t > thread_id_map;
+	thread_local size_t thread_id = -1;
 };
