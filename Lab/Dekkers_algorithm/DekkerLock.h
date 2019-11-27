@@ -10,7 +10,6 @@ public:
 	void lock()
 	{
 		size_t id = this->getId();
-		assert(id != std::numeric_limits<size_t>::max());
 		size_t next_id = 1 - id;
 
 		want_to_enter[id] = true;
@@ -30,7 +29,6 @@ public:
 	void unlock()
 	{
 		size_t id = this->getId();
-		assert(id != std::numeric_limits<size_t>::max());
 		size_t next_id = 1 - id;
 		favoured_thread = next_id;
 		want_to_enter[id] = false;
