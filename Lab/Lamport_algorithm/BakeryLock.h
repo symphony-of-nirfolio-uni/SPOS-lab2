@@ -9,6 +9,8 @@
 #include <mutex>
 #include <numeric>
 #include <assert.h>
+#include <iostream>
+#include <atomic>
 
 
 namespace bakery_lock
@@ -23,8 +25,8 @@ namespace bakery_lock
 			assert(id != std::numeric_limits<size_t>::max());
 
 			is_enter_array[id] = true;
-
-			size_t max_item = number_array[0];
+			
+			size_t max_item = 0;
 			for (size_t i = 0; i < Max_threads_count; ++i)
 			{
 				size_t item = number_array[i];
@@ -53,12 +55,11 @@ namespace bakery_lock
 		{
 			size_t id = this->getId();
 			assert(id != std::numeric_limits<size_t>::max());
-
 			number_array[id] = 0;
 		}
 			
 	private:
-		std::array<bool, Max_threads_count> is_enter_array{ false };
-		std::array<size_t, Max_threads_count> number_array{ 0 };
+		std::array<std::atomic_bool, Max_threads_count> is_enter_array{ false };
+		std::array<volatile size_t, Max_threads_count> number_array{ 0 };
 	};
 }
