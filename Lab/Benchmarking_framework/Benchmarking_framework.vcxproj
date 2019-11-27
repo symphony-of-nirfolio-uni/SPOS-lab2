@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{E171FA05-2F3C-40EB-8A0E-47D8614BB808}</ProjectGuid>
-    <RootNamespace>Buildall</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{C5D5A491-2CF7-4706-8749-F768C8261256}</ProjectGuid>
+    <RootNamespace>Benchmarkingframework</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,13 +41,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -81,7 +81,7 @@
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
@@ -123,6 +123,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AtomicLockable.cpp" />
+    <ClCompile Include="BakeryLockable.cpp" />
+    <ClCompile Include="Benchmark.cpp" />
+    <ClCompile Include="CounterClass.cpp" />
+    <ClCompile Include="DekkerLockable.cpp" />
+    <ClCompile Include="ImprovedBakeryLockable.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MutexLockable.cpp" />
+    <ClCompile Include="Semaphore.cpp" />
+    <ClCompile Include="SemaphoreLockable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractLockable.h" />
+    <ClInclude Include="AtomicLockable.h" />
+    <ClInclude Include="BakeryLockable.h" />
+    <ClInclude Include="Benchmark.h" />
+    <ClInclude Include="CounterClass.h" />
+    <ClInclude Include="DekkerLockable.h" />
+    <ClInclude Include="ImprovedBakeryLockable.h" />
+    <ClInclude Include="Lockables.h" />
+    <ClInclude Include="MutexLockable.h" />
+    <ClInclude Include="Semaphore.h" />
+    <ClInclude Include="SemaphoreLockable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
