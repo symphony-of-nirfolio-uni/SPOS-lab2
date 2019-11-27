@@ -13,16 +13,36 @@ private:
   std::atomic<std::size_t> next_ticket = 0;
   std::atomic<std::size_t> now_serving = 0;
   std::atomic<bool> locked = false;
-  const std::size_t APPROX_BOUND_VALUE = 100;
+  const std::size_t APPROX_BOUND_VALUE = 10'000'000;
 
 public:
-  ImprovedBakeryLock();
-  virtual ~ImprovedBakeryLock();
+	void lock() override
+	{
+		if (next_ticket == APPROX_BOUND_VALUE - 1) locked = true;
 
-  virtual void lock() override;
-  virtual void unlock() override;
+		while (locked) {
+			std::this_thread::yield();
+		}
+
+		size_t thread_ticket = next_ticket.fetch_add(1, std::memory_order_acquire);
+		while (thread_ticket != now_serving) {
+			std::this_thread::yield();
+		}
+	}
+	void unlock() override
+	{
+		now_serving++;
+		if (now_serving == next_ticket) {
+			restrictTickets();
+			locked = false;
+		}
+	}
 
 private:
-  void restrictTickets();
+	void restrictTickets()
+	{
+		next_ticket = 0;
+		now_serving = 0;
+	}
 };
 

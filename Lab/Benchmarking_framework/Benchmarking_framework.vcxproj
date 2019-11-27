@@ -127,6 +127,7 @@
     <ClCompile Include="BakeryLockable.cpp" />
     <ClCompile Include="Benchmark.cpp" />
     <ClCompile Include="CounterClass.cpp" />
+    <ClCompile Include="ImprovedBakeryLockable.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MutexLockable.cpp" />
     <ClCompile Include="Semaphore.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="BakeryLockable.h" />
     <ClInclude Include="Benchmark.h" />
     <ClInclude Include="CounterClass.h" />
+    <ClInclude Include="ImprovedBakeryLockable.h" />
     <ClInclude Include="Lockables.h" />
     <ClInclude Include="MutexLockable.h" />
     <ClInclude Include="Semaphore.h" />
