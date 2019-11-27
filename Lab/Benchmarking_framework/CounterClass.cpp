@@ -1,5 +1,6 @@
 #include "CounterClass.h"
 #include "BakeryLockable.h"
+#include "DekkerLockable.h"
 
 CounterClass::CounterClass(AbstractLockable& lock, int& counter, int steps)
 {
@@ -16,11 +17,22 @@ void CounterClass::increment_counter(AbstractLockable& lock, int& counter, int s
 		bakery->registerThread();
 	}
 
+	DekkerLockable* dekker = dynamic_cast<DekkerLockable*>(&lock);
+	if (dekker)
+	{
+		dekker->registerThread();
+	}
+
 	for (int i = 0; i < steps; i++) 
 	{
 		lock.lock();
 		counter += 1;
 		lock.unlock();
+	}
+
+	if (dekker)
+	{
+		dekker->unregisterThread();
 	}
 
 	if (bakery)

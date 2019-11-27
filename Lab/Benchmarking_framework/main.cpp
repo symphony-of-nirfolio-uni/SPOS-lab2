@@ -23,13 +23,15 @@ int main()
 	int tests = 5;
 	int start_amount = 2;
 
-	int steps = 100'000;
+	int steps = 1'000'000;
 
 	singlethreaded_time(steps);
 
+	//imp_bakery_lock_bm(tests, start_amount, steps);
+
 	bakery_lock_bm(tests, start_amount, steps);
 
-	//imp_bakery_lock_bm(tests, start_amount, steps);
+	dekker_lock_bm(1, 2, steps);
 
 	atomic_lock_bm(tests, start_amount, steps);
 

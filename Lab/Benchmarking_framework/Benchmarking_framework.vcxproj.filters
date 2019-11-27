@@ -42,6 +42,9 @@
     <ClCompile Include="ImprovedBakeryLockable.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="DekkerLockable.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractLockable.h">
@@ -72,6 +75,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="ImprovedBakeryLockable.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="DekkerLockable.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
