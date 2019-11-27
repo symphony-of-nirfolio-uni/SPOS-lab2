@@ -18,7 +18,7 @@ void ImprovedBakeryLock::lock()
     std::this_thread::yield();
   }
 
-  size_t thread_ticket = next_ticket.fetch_add(1, std::memory_order_acquire);
+  std::size_t thread_ticket = next_ticket.fetch_add(1, std::memory_order_acquire);
   while (thread_ticket != now_serving) {
     std::this_thread::yield();
   }
@@ -31,16 +31,6 @@ void ImprovedBakeryLock::unlock()
     restrictTickets();
     locked = false;
   }
-}
-
-bool ImprovedBakeryLock::tryLock()
-{
-  if (next_ticket == now_serving) {
-    lock();
-    return true;
-  }
-
-  return false;
 }
 
 void ImprovedBakeryLock::restrictTickets()
