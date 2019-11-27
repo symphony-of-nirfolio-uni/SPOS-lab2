@@ -7,7 +7,7 @@ using std::cout;
 
 int main()
 {
-	int step = 100000;
+	int step = 1000000;
 	int answer = create_race_condition(step);
 	cout << "Race condition\n";
 	cout << "Value that has to be: " << step * 2 << '\n';

@@ -10,7 +10,7 @@ int create_race_condition(int step)
 	return counter;
 }
 
-void increment_counter(int step, int& counter)
+void increment_counter(int step, int &counter)
 {
 	for (int i = 0; i < step; ++i)
 	{
@@ -35,12 +35,14 @@ int dekkers_algorithm(int step)
 
 void dekkers_increment_counter(int step, int& counter)
 {
+	dekkerLock.registerThread();
 	for (int i = 0; i < step; ++i)
 	{
 		dekkerLock.lock();
 		++counter;
 		dekkerLock.unlock();
 	}
+	dekkerLock.unregisterThread();
 }
 
 
