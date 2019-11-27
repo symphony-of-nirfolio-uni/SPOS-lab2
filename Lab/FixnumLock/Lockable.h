@@ -7,6 +7,7 @@
 #include <thread>
 #include <mutex>
 #include <numeric>
+#include <assert.h>
 
 
 template<size_t Max_threads_count>
@@ -27,6 +28,8 @@ public:
 			}
 		}
 
+		// thread not found
+		assert(false);
 		return std::numeric_limits<size_t>::max();
 	}
 
@@ -47,6 +50,9 @@ public:
 				return;
 			}
 		}
+
+		// has no free space
+		assert(false);
 	}
 
 	void unregisterThread() override
@@ -66,6 +72,9 @@ public:
 				return;
 			}
 		}
+
+		// thread not found
+		assert(false);
 	}
 
 	void reset() override
