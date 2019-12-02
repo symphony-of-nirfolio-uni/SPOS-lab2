@@ -40,13 +40,13 @@ namespace bakery_lock
 			{
 				while (is_enter_array[i])
 				{
-					std::this_thread::yield();
+
 				}
 
 				while ((number_array[i] != 0) 
 					&& (number_array[id] > number_array[i] || (number_array[id] == number_array[i] && id > i)))
 				{
-					std::this_thread::yield();
+
 				}
 			}
 		}
