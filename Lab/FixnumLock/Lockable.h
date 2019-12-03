@@ -50,13 +50,11 @@ public:
 			return thread_id;
 		}
 
-
 		// thread not found
 		assert(false);
 		throw;
 	}
-
-
+	
 	void registerThread() override
 	{
 		std::lock_guard<std::mutex> lock(thread_id_to_number_lock);
