@@ -15,8 +15,8 @@ private:
   std::atomic<bool> locked = false;
   const std::size_t APPROX_BOUND_VALUE = 10'000'000;
 
-public:
-	void lock() override
+protected:
+	void lock_by_id(size_t id) override
 	{
 		if (next_ticket == APPROX_BOUND_VALUE - 1) locked = true;
 
@@ -29,7 +29,7 @@ public:
 			std::this_thread::yield();
 		}
 	}
-	void unlock() override
+	void unlock_by_id(size_t id) override
 	{
 		now_serving++;
 		if (now_serving == next_ticket) {
