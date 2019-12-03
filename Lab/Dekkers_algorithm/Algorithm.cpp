@@ -1,5 +1,17 @@
 #include "Algorithm.h"
 
+
+#include "DekkerLock.h"
+#include "EmptyLock.h"
+
+#include <thread>
+#include <iostream>
+
+using std::thread;
+using std::cout;
+using std::ref;
+
+
 int create_race_condition(int step)
 {
 	int counter = 0;
