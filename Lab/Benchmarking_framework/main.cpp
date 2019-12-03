@@ -29,7 +29,7 @@ int main()
 
 	bakery_lock_bm(tests, start_amount, steps);
 
-	//imp_bakery_lock_bm(tests, start_amount, steps);
+	imp_bakery_lock_bm(tests, start_amount, steps);
 
 	atomic_lock_bm(tests, start_amount, steps);
 
