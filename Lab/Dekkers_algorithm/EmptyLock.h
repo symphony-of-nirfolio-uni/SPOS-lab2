@@ -3,13 +3,13 @@
 
 class EmptyLock : public Lockable<2>
 {
-public:
-	void lock()
+protected:
+	void lock_by_id(size_t id)
 	{
 	
 	}
 
-	void unlock()
+	void unlock_by_id(size_t id)
 	{
 		
 	}

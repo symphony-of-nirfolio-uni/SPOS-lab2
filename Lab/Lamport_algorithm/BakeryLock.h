@@ -18,11 +18,10 @@ namespace bakery_lock
 	template<size_t Max_threads_count>
 	class BakeryLock : public Lockable<Max_threads_count>
 	{
-	public:
-		void lock() override
+	protected:
+		void lock_by_id(size_t id) override
 		{
-			size_t id = this->getId();
-			assert(id != std::numeric_limits<size_t>::max());
+			assert(id < Max_threads_count);
 
 			is_enter_array[id] = true;
 			
@@ -40,21 +39,20 @@ namespace bakery_lock
 			{
 				while (is_enter_array[i])
 				{
-					std::this_thread::yield();
+
 				}
 
 				while ((number_array[i] != 0) 
 					&& (number_array[id] > number_array[i] || (number_array[id] == number_array[i] && id > i)))
 				{
-					std::this_thread::yield();
+
 				}
 			}
 		}
 
-		void unlock() override
+		void unlock_by_id(size_t id) override
 		{
-			size_t id = this->getId();
-			assert(id != std::numeric_limits<size_t>::max());
+			assert(id < Max_threads_count);
 			number_array[id] = 0;
 		}
 			

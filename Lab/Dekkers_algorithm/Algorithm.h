@@ -1,13 +1,6 @@
 #pragma once
-#include <thread>
-#include <iostream>
 
-#include "DekkerLock.h"
-#include "EmptyLock.h"
-
-using std::thread;
-using std::cout;
-using std::ref;
+#include "../FixnumLock/FixnumLock.h"
 
 //part 1
 int create_race_condition(int step);
@@ -21,5 +14,5 @@ void dekkers_increment_counter(int step, int& counter);
 bool check_on_raced(FixnumLock& lockable, int step);
 void race_increment_counter(FixnumLock& lockable, int step, int& counter);
 
-//tes_all
+//test_all
 void test();
