@@ -12,7 +12,7 @@
 #include <exception>
 
 
-thread_local size_t thread_id{ std::numeric_limits<size_t>::max() };
+static thread_local size_t thread_id{ std::numeric_limits<size_t>::max() };
 
 
 template<size_t Max_threads_count>
