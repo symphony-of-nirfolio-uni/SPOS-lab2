@@ -1,16 +1,14 @@
 #pragma once
 #include "../FixnumLock/Lockable.h"
-#include <assert.h>
 #include <atomic>
 
 class DekkerLock : public Lockable<2>
 {
 	std::atomic_size_t favoured_thread;
 	std::atomic_bool want_to_enter[2] = { false, false };
-public:
-	void lock()
+protected:
+	void lock_by_id(size_t id)
 	{
-		size_t id = this->getId();
 		size_t next_id = 1 - id;
 
 		want_to_enter[id] = true;
@@ -27,9 +25,8 @@ public:
 		}
 	}
 
-	void unlock()
+	void unlock_by_id(size_t id)
 	{
-		size_t id = this->getId();
 		size_t next_id = 1 - id;
 		favoured_thread = next_id;
 		want_to_enter[id] = false;

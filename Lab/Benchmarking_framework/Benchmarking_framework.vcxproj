@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AtomicCounter.cpp" />
     <ClCompile Include="AtomicLockable.cpp" />
     <ClCompile Include="BakeryLockable.cpp" />
     <ClCompile Include="Benchmark.cpp" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractLockable.h" />
+    <ClInclude Include="AtomicCounter.h" />
     <ClInclude Include="AtomicLockable.h" />
     <ClInclude Include="BakeryLockable.h" />
     <ClInclude Include="Benchmark.h" />

@@ -152,7 +152,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ImprovedBakeryLock.h" />
-    <ClInclude Include="Lockable.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
