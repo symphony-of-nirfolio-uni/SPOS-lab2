@@ -18,9 +18,6 @@
     <ClInclude Include="pch.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Lockable.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="ImprovedBakeryLock.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
